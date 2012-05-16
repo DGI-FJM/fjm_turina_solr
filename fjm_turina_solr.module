@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Display plugin module for islandora_solr_search
+ */
+
+
+/**
+ * Implements hook_islandora_solr_primary_display()
+ */
+function fjm_turina_solr_islandora_solr_primary_display() {
+  return array(
+    // 'machine-name' = array(
+    // 'name' => 'Human Readable Name',
+    // 'module' => 'module_name',
+    // 'file' => 'FileName.inc',
+    // 'class' => 'ClassName',
+    // 'function' => 'function_name',
+    // 'description' => 'A description of the display profile',
+    // );
+    'turina' => array(
+      'name' => t('Turina'),
+      'module' => 'fjm_turina_solr',
+      'file' => 'IslandoraSolrResultsTurina.inc',
+      'class' => 'IslandoraSolrResultsTurina',
+      'function' => "displayResults",
+      'description' => t("FJM Turina search results."),
+    ),
+  );
+}
+
+
+
+/**
+ * Implementation of hook_theme()
+ */
+function fjm_turina_solr_theme() {
+ 
+  return array(
+    // main page display
+    'fjm_turina_solr' => array(
+      'template' => 'fjm-turina-solr',
+      'arguments' => array('results' => NULL, 'elements' => NULL),
+    ),
+  );
+}
+
+
+
+/**
+ * Implementation of hook_preprocess()
+ */
+function fjm_turina_solr_preprocess_fjm_turina_solr(&$variables) {
+  // base url
+  global $base_url;
+  $variables['base_url'] = $base_url;
+  
+  // elements
+  $elements = $variables['elements'];
+  
+  // make all variables in 'elements' available as variables in the template file
+  foreach ($variables['elements'] as $key => $value) {
+    $variables[$key] = $value;
+  }
+}

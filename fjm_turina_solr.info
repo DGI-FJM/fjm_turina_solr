@@ -1,0 +1,6 @@
+name = FJM Turina Solr
+description = Solr primary display plugin for FJM Turina
+dependencies[] = islandora_solr_search
+package = Fedora Repository
+version = 6.1dev
+core = 6.x

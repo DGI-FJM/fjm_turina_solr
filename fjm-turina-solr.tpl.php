@@ -22,7 +22,7 @@ mods_genre_local_authority_ms ~ Genre
 mods_name_personal_primary_ms ~ Author
 mods_dateCreated_ms ~ Date
 -->
-
+<?php dsm($results); ?>
 <?php if (empty($results)): ?>
   <p class="no-results"><?php print t('Sorry, but your search returned no results.'); ?></p>
 <?php else: ?>
@@ -63,9 +63,7 @@ mods_dateCreated_ms ~ Date
         </div>
         <div class="solr-right">
           <!-- Thumbnail -->
-          <?php $image = '<img src="http://sandbox.islandora.ca/fedora/repository/islandora:273/TN" />'; ?>
-          <!-- http://sandbox.islandora.ca/fedora/repository/islandora:273/TN -->
-          <!-- ' . $base_url . 'fedora/repository/' . $result['PID']['value'] . 'TN/TN -->
+          <?php $image = '<img src="' . $base_url . '/fedora/repository/' . $result['turina_thumbnail_s']['value'] . '/TN" />'; ?>
           <?php print l($image, 'fedora/repository/' . $result['PID']['value'], array('html' => TRUE, 'attributes' => array('title' => $result['mods_title_mlt']['value']))); ?>
         </div>
       </div>

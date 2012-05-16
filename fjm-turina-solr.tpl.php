@@ -21,8 +21,10 @@ mods_note_ms ~ Description
 mods_genre_local_authority_ms ~ Genre
 mods_name_personal_primary_ms ~ Author
 mods_dateCreated_ms ~ Date
+
+turina_thumbnail_s -> points to object with correct thumbnail
 -->
-<?php dsm($results); ?>
+
 <?php if (empty($results)): ?>
   <p class="no-results"><?php print t('Sorry, but your search returned no results.'); ?></p>
 <?php else: ?>
